@@ -18,13 +18,16 @@
             color: white;
             overflow: hidden;
             position: relative;
+            flex-direction: column;
         }
 
+        /* Animación del título de felicitación */
         h1 {
-            font-size: 4em;
+            font-size: 3em;
             text-align: center;
             font-weight: bold;
             animation: titleAnimation 3s ease-out forwards;
+            margin-top: 0;
         }
 
         @keyframes titleAnimation {
@@ -42,14 +45,18 @@
             }
         }
 
-        /* Texto dinámico que aparece y desaparece */
+        /* Mensajes que aparecen y desaparecen */
         .text {
             position: absolute;
             font-size: 2em;
             opacity: 0;
-            animation: fadeInOut 5s infinite;
+            animation: fadeInOut 8s infinite;
             text-align: center;
             transition: opacity 1s ease;
+            width: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         @keyframes fadeInOut {
@@ -61,12 +68,11 @@
             }
         }
 
-        /* Para mover el texto aleatoriamente */
-        .text:nth-child(1) { animation-delay: 0s; top: 20%; left: 10%; }
-        .text:nth-child(2) { animation-delay: 1s; top: 40%; left: 50%; }
-        .text:nth-child(3) { animation-delay: 2s; top: 60%; left: 30%; }
-        .text:nth-child(4) { animation-delay: 3s; top: 30%; left: 70%; }
-        .text:nth-child(5) { animation-delay: 4s; top: 80%; left: 20%; }
+        /* Para mover los textos de forma dinámica */
+        .text:nth-child(1) { animation-delay: 0s; top: 20%; }
+        .text:nth-child(2) { animation-delay: 3s; top: 30%; }
+        .text:nth-child(3) { animation-delay: 6s; top: 40%; }
+        .text:nth-child(4) { animation-delay: 9s; top: 50%; }
 
         /* Corazones animados */
         .heart {
@@ -76,7 +82,7 @@
             background-color: red;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             transform: rotate(45deg);
-            animation: heartAnimation 2s ease-out infinite;
+            animation: heartAnimation 3s ease-out infinite;
         }
 
         @keyframes heartAnimation {
@@ -113,22 +119,23 @@
     </style>
 </head>
 <body>
-    <h1>¡Feliz Día Desiree!</h1>
+    <!-- Felicitación inicial -->
+    <h1>¡Feliz Cumpleaños, Desiree!</h1>
+
     <!-- Mensajes emotivos que aparecerán y desaparecerán -->
-    <div class="text">Desiree, eres lo más importante para mí.</div>
-    <div class="text">Nunca te fallaré, siempre estaré a tu lado.</div>
-    <div class="text">Te echo de menos, más de lo que imaginas.</div>
-    <div class="text">Estoy tan orgulloso de la persona que eres.</div>
-    <div class="text">Te quiero con todo mi corazón, hermana.</div>
+    <div class="text">Desiree, hoy quiero felicitarte y recordarte lo increíble que eres. No importa lo que pase, siempre estaré a tu lado. ¡Te quiero mucho!</div>
+    <div class="text">Eres mi hermana y mi mejor amiga. Estoy tan orgulloso de la persona que te has convertido. Gracias por ser tan fuerte y llena de amor.</div>
+    <div class="text">Te echo de menos más de lo que imaginas. La distancia nunca cambiará lo que siento por ti. Te quiero más que las palabras puedan expresar.</div>
+    <div class="text">Prometo que nunca te fallaré. Siempre seré tu apoyo, sin importar lo que venga. Juntos, siempre, te lo prometo.</div>
     
     <!-- Corazones animados -->
     <div class="heart" style="top: 10%; left: 30%;"></div>
     <div class="heart" style="top: 50%; left: 60%;"></div>
     <div class="heart" style="top: 80%; left: 10%;"></div>
     <div class="heart" style="top: 20%; left: 80%;"></div>
-    
+
     <!-- Botón interactivo -->
-    <button class="button" onclick="alert('¡Te quiero, Desiree! 💖')">¡Dime que te gusta!</button>
+    <button class="button" onclick="alert('¡Te quiero mucho, Desiree! 💖')">¡Dime que te gusta!</button>
 
     <script>
         // Generar corazones adicionales de manera aleatoria

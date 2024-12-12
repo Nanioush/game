@@ -19,138 +19,92 @@
             overflow: hidden;
             position: relative;
             flex-direction: column;
-        }
-
-        /* Estilo del título */
-        h1 {
-            font-size: 3.5em;
             text-align: center;
-            font-weight: bold;
-            animation: titleAnimation 3s ease-out forwards;
-            margin-top: 20px;
-            margin-bottom: 50px; /* Más espacio entre el título y los mensajes */
         }
 
-        @keyframes titleAnimation {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Mensajes que aparecen y desaparecen */
-        .text {
-            position: absolute;
-            font-size: 2em;
-            opacity: 0;
-            animation: fadeInOut 8s infinite;
-            text-align: center;
-            transition: opacity 1s ease;
-            width: 80%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            line-height: 1.5; /* Para mejorar la legibilidad */
-        }
-
-        @keyframes fadeInOut {
-            0%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
-        /* Para mover los textos de forma dinámica */
-        .text:nth-child(1) { animation-delay: 0s; top: 30%; }
-        .text:nth-child(2) { animation-delay: 3s; top: 45%; }
-        .text:nth-child(3) { animation-delay: 6s; top: 60%; }
-        .text:nth-child(4) { animation-delay: 9s; top: 75%; }
-
-        /* Corazones animados */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            transform: rotate(45deg);
-            animation: heartAnimation 3s ease-out infinite;
-        }
-
-        @keyframes heartAnimation {
-            0% {
-                transform: rotate(45deg) scale(1);
-                opacity: 0;
-            }
-            50% {
-                transform: rotate(45deg) scale(1.5);
-                opacity: 1;
-            }
-            100% {
-                transform: rotate(45deg) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* Botón interactivo */
-        .button {
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 1.5em;
+        /* Cuadro interactivo */
+        .square {
+            padding: 20px 40px;
             background-color: #ff4081;
             color: white;
+            font-size: 1.8em;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: background-color 0.3s;
+            margin-bottom: 50px;
         }
 
-        .button:hover {
-            transform: scale(1.1);
+        .square:hover {
+            background-color: #e040fb;
         }
+
+        /* Estilo del mensaje */
+        .text {
+            font-size: 2em;
+            opacity: 0;
+            color: white;
+            transition: opacity 1s ease;
+            margin-top: 20px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animación de los mensajes */
+        .text.show {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
-    <!-- Felicitación inicial -->
-    <h1>¡Feliz Cumpleaños, Desiree!</h1>
 
-    <!-- Mensajes emotivos que aparecerán y desaparecerán -->
-    <div class="text">Desiree, hoy quiero felicitarte y recordarte lo increíble que eres. No importa lo que pase, siempre estaré a tu lado. ¡Te quiero mucho!</div>
-    <div class="text">Eres mi hermana y mi mejor amiga. Estoy tan orgulloso de la persona que te has convertido. Gracias por ser tan fuerte y llena de amor.</div>
-    <div class="text">Te echo de menos más de lo que imaginas. La distancia nunca cambiará lo que siento por ti. Te quiero más que las palabras puedan expresar.</div>
-    <div class="text">Prometo que nunca te fallaré. Siempre seré tu apoyo, sin importar lo que venga. Juntos, siempre, te lo prometo.</div>
-    
-    <!-- Corazones animados -->
-    <div class="heart" style="top: 10%; left: 30%;"></div>
-    <div class="heart" style="top: 50%; left: 60%;"></div>
-    <div class="heart" style="top: 80%; left: 10%;"></div>
-    <div class="heart" style="top: 20%; left: 80%;"></div>
+    <!-- Cuadro donde se hace clic para empezar -->
+    <button class="square" onclick="showMessage()">¡Felicidades hermanita!</button>
 
-    <!-- Botón interactivo -->
-    <button class="button" onclick="alert('¡Te quiero mucho, Desiree! 💖')">¡Dime que te gusta!</button>
+    <!-- Espacio para los mensajes -->
+    <div id="messageContainer"></div>
 
     <script>
-        // Generar corazones adicionales de manera aleatoria
-        setInterval(() => {
-            let heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.top = `${Math.random() * 100}%`;
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }, 500);
+        // Lista de mensajes de felicitación
+        const messages = [
+            "Desiree, eres una persona increíble y me siento tan afortunado de tenerte como hermana. ¡Te quiero muchísimo!",
+            "Siempre estaré a tu lado, apoyándote en todo lo que necesites. No importa lo que pase, nunca te fallaré.",
+            "La distancia no puede separarnos, y aunque te eche de menos, siempre estarás en mi corazón.",
+            "Estoy muy orgulloso de la persona en la que te has convertido. Eres fuerte, inteligente, y llena de amor.",
+            "Feliz cumpleaños, hermana. Gracias por ser mi mejor amiga, mi confidente y mi inspiración. ¡Te quiero con todo mi corazón!"
+        ];
+
+        let currentMessageIndex = 0;
+
+        // Función para mostrar un mensaje al hacer clic
+        function showMessage() {
+            if (currentMessageIndex < messages.length) {
+                const messageContainer = document.getElementById('messageContainer');
+
+                // Crear un nuevo elemento para el mensaje
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('text');
+                newMessage.innerText = messages[currentMessageIndex];
+
+                // Agregar el nuevo mensaje al contenedor
+                messageContainer.appendChild(newMessage);
+
+                // Mostrar el mensaje con animación
+                setTimeout(() => {
+                    newMessage.classList.add('show');
+                }, 10);
+
+                // Aumentar el índice del mensaje
+                currentMessageIndex++;
+            } else {
+                // Si ya no hay más mensajes, desactivar el botón
+                document.querySelector('.square').disabled = true;
+                document.querySelector('.square').innerText = '¡Ya no hay más mensajes! 🎉';
+            }
+        }
     </script>
+
 </body>
 </html>

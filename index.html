@@ -21,13 +21,14 @@
             flex-direction: column;
         }
 
-        /* Animación del título de felicitación */
+        /* Estilo del título */
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             text-align: center;
             font-weight: bold;
             animation: titleAnimation 3s ease-out forwards;
-            margin-top: 0;
+            margin-top: 20px;
+            margin-bottom: 50px; /* Más espacio entre el título y los mensajes */
         }
 
         @keyframes titleAnimation {
@@ -57,6 +58,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            line-height: 1.5; /* Para mejorar la legibilidad */
         }
 
         @keyframes fadeInOut {
@@ -69,10 +71,10 @@
         }
 
         /* Para mover los textos de forma dinámica */
-        .text:nth-child(1) { animation-delay: 0s; top: 20%; }
-        .text:nth-child(2) { animation-delay: 3s; top: 30%; }
-        .text:nth-child(3) { animation-delay: 6s; top: 40%; }
-        .text:nth-child(4) { animation-delay: 9s; top: 50%; }
+        .text:nth-child(1) { animation-delay: 0s; top: 30%; }
+        .text:nth-child(2) { animation-delay: 3s; top: 45%; }
+        .text:nth-child(3) { animation-delay: 6s; top: 60%; }
+        .text:nth-child(4) { animation-delay: 9s; top: 75%; }
 
         /* Corazones animados */
         .heart {
@@ -152,4 +154,3 @@
     </script>
 </body>
 </html>
-

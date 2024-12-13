@@ -11,14 +11,14 @@
             padding: 0;
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
             background: linear-gradient(135deg, #6a11cb, #2575fc);
             font-family: 'Arial', sans-serif;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
-            flex-direction: column;
             text-align: center;
         }
 
@@ -32,7 +32,10 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s;
-            margin-bottom: 50px;
+            position: fixed; /* Fijamos el botón */
+            bottom: 20px; /* Siempre estará al final de la pantalla */
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .square:hover {
@@ -47,8 +50,7 @@
             transition: opacity 1s ease;
             margin-top: 20px;
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 800px;
         }
 
         /* Animación de los mensajes */
@@ -56,7 +58,13 @@
             opacity: 1;
         }
 
-        /* Estilos del contenedor de confeti */
+        /* Contenedor de mensajes */
+        #messageContainer {
+            margin-bottom: 100px; /* Espacio extra para evitar que los mensajes toquen el botón */
+            text-align: center;
+        }
+
+        /* Estilos del confeti */
         .confetti-container {
             position: absolute;
             top: 0;
@@ -73,11 +81,11 @@
     <!-- Contenedor para el confeti -->
     <div class="confetti-container" id="confetti"></div>
 
-    <!-- Cuadro donde se hace clic para empezar -->
-    <button class="square" onclick="showMessage()">¡Felicidades hermanita!</button>
-
     <!-- Espacio para los mensajes -->
     <div id="messageContainer"></div>
+
+    <!-- Cuadro donde se hace clic para empezar -->
+    <button class="square" onclick="showMessage()">¡Felicidades hermanita!</button>
 
     <script>
         // Lista de mensajes de felicitación

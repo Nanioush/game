@@ -2,144 +2,235 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>NÚCLEO // Sistema Interno</title>
+<title>NÚCLEO // Sistema interno</title>
 
 <style>
 
 body{
-background:#030303;
+background:black;
 color:#00ff9c;
 font-family:monospace;
 margin:0;
+overflow:hidden;
+}
+
+/* BOOT */
+
+#boot{
+position:fixed;
+width:100%;
+height:100%;
+padding:40px;
+background:black;
+}
+
+.progress{
+height:10px;
+background:#111;
+margin-top:20px;
+}
+
+.bar{
+height:10px;
+width:0%;
+background:#00ff9c;
+}
+
+/* LOGIN */
+
+#login{
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:black;
+}
+
+input{
+background:black;
+border:1px solid #00ff9c;
+color:#00ff9c;
+padding:10px;
+font-family:monospace;
+}
+
+/* PANEL */
+
+#system{
+display:none;
+padding:30px;
 }
 
 .header{
-background:#0a0a0a;
-border-bottom:1px solid #111;
-padding:15px;
 display:flex;
 justify-content:space-between;
+border-bottom:1px solid #111;
+padding-bottom:10px;
+margin-bottom:20px;
 }
 
-.logo{
-letter-spacing:3px;
-}
-
-.status{
-color:#888;
-}
-
-.container{
-padding:40px;
-max-width:1200px;
-margin:auto;
-}
-
-/* panel */
-
-.panel-grid{
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
 .panel{
-background:#070707;
 border:1px solid #111;
 padding:20px;
-border-radius:6px;
+background:#050505;
 }
-
-.panel h3{
-margin-top:0;
-font-size:16px;
-color:#00ff9c;
-}
-
-/* progreso */
-
-.progress{
-background:#111;
-height:10px;
-border-radius:5px;
-margin-top:10px;
-}
-
-.progress-bar{
-height:10px;
-background:#00ff9c;
-width:100%;
-border-radius:5px;
-}
-
-/* fases */
 
 .phase{
+padding:5px 0;
 border-bottom:1px solid #111;
-padding:6px 0;
-color:#bbb;
 }
 
-/* terminal */
+/* MAPA */
+
+.system-map{
+display:flex;
+flex-direction:column-reverse;
+gap:6px;
+font-size:14px;
+}
+
+.system-map div{
+padding:4px 0;
+border-bottom:1px solid #111;
+}
+
+/* RADAR */
+
+.radar-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:20px;
+}
+
+.radar{
+position:relative;
+width:200px;
+height:200px;
+border-radius:50%;
+border:1px solid #00ff9c;
+overflow:hidden;
+}
+
+.radar-circle{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+border:1px solid rgba(0,255,156,0.2);
+}
+
+.radar-circle:nth-child(2){
+width:140px;
+height:140px;
+top:30px;
+left:30px;
+}
+
+.radar-circle:nth-child(3){
+width:80px;
+height:80px;
+top:60px;
+left:60px;
+}
+
+.radar-line{
+position:absolute;
+width:50%;
+height:2px;
+background:#00ff9c;
+top:50%;
+left:50%;
+transform-origin:left center;
+animation:radar-scan 4s linear infinite;
+}
+
+@keyframes radar-scan{
+
+from{ transform:rotate(0deg); }
+
+to{ transform:rotate(360deg); }
+
+}
+
+/* TERMINAL */
 
 .terminal{
-background:#000;
+margin-top:30px;
 border:1px solid #111;
 padding:20px;
-margin-top:40px;
-border-radius:6px;
-}
-
-input{
 background:black;
-border:none;
-color:#00ff9c;
-font-family:monospace;
-font-size:14px;
-width:100%;
-outline:none;
 }
 
-.footer{
-margin-top:40px;
-color:#444;
-font-size:12px;
+#terminal-output{
+height:150px;
+overflow:auto;
+margin-bottom:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="header">
+<!-- BOOT -->
 
-<div class="logo">NÚCLEO SYSTEM</div>
+<div id="boot">
 
-<div class="status">
-STATUS: ACTIVO
-</div>
-
-</div>
-
-<div class="container">
-
-<div class="panel-grid">
-
-<div class="panel">
-
-<h3>PROGRESO DEL SISTEMA</h3>
-
-Fases completadas: 9 / 9
+<div id="bootlog"></div>
 
 <div class="progress">
-<div class="progress-bar"></div>
+<div class="bar" id="bar"></div>
 </div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="login">
+
+<h2>ACCESO AL NÚCLEO</h2>
+
+<input id="password" placeholder="introducir clave">
+
+</div>
+
+<!-- PANEL -->
+
+<div id="system">
+
+<div class="header">
+
+<div>NÚCLEO SYSTEM</div>
+<div>STATUS: ACTIVO</div>
+
+</div>
+
+<div class="grid">
+
+<div class="panel">
+
+<h3>PROGRESO</h3>
+
+Sistema estructural completado  
+9 / 9 fases
 
 </div>
 
 <div class="panel">
 
-<h3>ESTADO</h3>
+<h3>FASES</h3>
 
 <div class="phase">Custodia ✔</div>
 <div class="phase">Dominio ✔</div>
@@ -155,20 +246,41 @@ Fases completadas: 9 / 9
 
 <div class="panel">
 
-<h3>SISTEMA</h3>
+<h3>MAPA DEL SISTEMA</h3>
 
-Nodo central activo  
-Estructura estable  
-Protocolo operativo
+<div class="system-map">
+
+<div>Ascenso</div>
+<div>Proyección</div>
+<div>Núcleo</div>
+<div>Arquitectura</div>
+<div>Consolidación</div>
+<div>Expansión</div>
+<div>Estrategia</div>
+<div>Dominio</div>
+<div>Custodia</div>
+
+</div>
 
 </div>
 
 <div class="panel">
 
-<h3>ACCESO</h3>
+<h3>RADAR DEL NÚCLEO</h3>
 
-Nivel actual:  
-**Operador**
+<div class="radar-container">
+
+<div class="radar">
+
+<div class="radar-circle"></div>
+<div class="radar-circle"></div>
+<div class="radar-circle"></div>
+
+<div class="radar-line"></div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -176,45 +288,148 @@ Nivel actual:
 
 <div class="terminal">
 
-> terminal núcleo  
-
-<input id="command" placeholder="escribe comando...">
-
+<div id="terminal-output">
+> terminal núcleo iniciado
 </div>
 
-<div class="footer">
-NÚCLEO INTERNO • INTERFAZ DE SISTEMA
+<input id="cmd" placeholder="comando...">
+
 </div>
 
 </div>
 
 <script>
 
-const input = document.getElementById("command");
+/* BOOT */
 
-input.addEventListener("keydown",function(e){
+const bootMessages = [
+"Iniciando núcleo...",
+"Cargando módulos...",
+"Verificando arquitectura...",
+"Sincronizando fases...",
+"Preparando interfaz..."
+];
+
+let i=0;
+const log=document.getElementById("bootlog");
+
+function boot(){
+
+if(i<bootMessages.length){
+
+let line=document.createElement("div");
+line.innerText=bootMessages[i];
+
+log.appendChild(line);
+
+i++;
+
+setTimeout(boot,700);
+
+}else{
+
+startBar();
+
+}
+
+}
+
+boot();
+
+let progress=0;
+
+function startBar(){
+
+const bar=document.getElementById("bar");
+
+let interval=setInterval(()=>{
+
+progress+=3;
+bar.style.width=progress+"%";
+
+if(progress>=100){
+
+clearInterval(interval);
+
+setTimeout(()=>{
+
+document.getElementById("boot").style.display="none";
+document.getElementById("login").style.display="flex";
+
+},500);
+
+}
+
+},40);
+
+}
+
+/* LOGIN */
+
+const passwordInput=document.getElementById("password");
+
+passwordInput.addEventListener("keydown",function(e){
 
 if(e.key==="Enter"){
 
-let cmd=input.value.toLowerCase();
+if(passwordInput.value==="nucleo9"){
 
-if(cmd==="estado"){
-alert("Sistema estable");
+document.getElementById("login").style.display="none";
+document.getElementById("system").style.display="block";
+
+}else{
+
+passwordInput.value="";
+alert("clave incorrecta");
+
 }
 
-else if(cmd==="fases"){
-alert("9 fases completadas");
 }
 
-else if(cmd==="salir"){
+});
+
+/* TERMINAL */
+
+const cmd=document.getElementById("cmd");
+const output=document.getElementById("terminal-output");
+
+cmd.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+let command=cmd.value.toLowerCase();
+
+let line=document.createElement("div");
+line.innerText="> "+command;
+output.appendChild(line);
+
+if(command==="estado"){
+output.append("Sistema estable");
+}
+
+else if(command==="fases"){
+output.append("9 fases completadas");
+}
+
+else if(command==="nucleo"){
+output.append("Nodo central activo");
+}
+
+else if(command==="limpiar"){
+output.innerHTML="";
+}
+
+else if(command==="salir"){
 window.location="index.html";
 }
 
 else{
-alert("Comando no reconocido");
+output.append("comando no reconocido");
 }
 
-input.value="";
+cmd.value="";
+
+output.scrollTop=output.scrollHeight;
 
 }
 

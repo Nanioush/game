@@ -3,8 +3,8 @@
 
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NÚCLEO</title>
 
@@ -13,11 +13,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+<div id="particles-js"></div>
 
 <header class="navbar">
 
@@ -81,10 +83,6 @@ Es una estructura diseñada para separar
 a quienes viven con disciplina real
 de quienes solo hablan de ella.
 
-El recorrido exige constancia,
-transformación personal
-y capacidad de construir algo real.
-
 </p>
 
 </div>
@@ -139,7 +137,7 @@ y capacidad de construir algo real.
 <div class="timeline-item">
 <span class="phase">Fase 7</span>
 <strong>Ascenso</strong>
-<p>Superar los límites anteriores.</p>
+<p>Superar límites anteriores.</p>
 </div>
 
 <div class="timeline-item">
@@ -161,6 +159,31 @@ y capacidad de construir algo real.
 </section>
 
 
+<section class="section">
+
+<div class="container">
+
+<h2>Estructura del sistema</h2>
+
+<div class="phase-map">
+
+<div>Inicio</div>
+<div>Prueba</div>
+<div>Dominio</div>
+<div>Custodia</div>
+<div>Pilar</div>
+<div>Expansión</div>
+<div>Ascenso</div>
+<div>Esencia</div>
+<div>Núcleo</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 <section id="central" class="section">
 
 <div class="container">
@@ -169,15 +192,9 @@ y capacidad de construir algo real.
 
 <p class="section-text">
 
-El núcleo central es la capa más exclusiva
-de la estructura.
-
-Solo llegan quienes han demostrado
-disciplina, constancia
-y evolución real.
-
-No se accede por interés.
-Se accede por mérito.
+La capa más exclusiva de la estructura.
+Solo llegan quienes han demostrado disciplina,
+constancia y evolución real.
 
 </p>
 
@@ -192,18 +209,19 @@ Se accede por mérito.
 
 <h2>Solicitud de acceso</h2>
 
-<p class="section-text">
+<form class="access-form" id="accessForm">
 
-El acceso a NÚCLEO comienza con una solicitud.
+<input type="text" id="name" placeholder="Nombre" required>
 
-Cada petición es revisada antes de continuar
-el recorrido.
+<input type="email" id="email" placeholder="Correo" required>
 
-</p>
+<textarea id="message" placeholder="Por qué quieres entrar al Núcleo"></textarea>
 
-<a class="btn-primary" href="#">
-Enviar solicitud
-</a>
+<button class="btn-primary">Enviar solicitud</button>
+
+</form>
+
+<p id="formStatus"></p>
 
 </div>
 
@@ -219,18 +237,16 @@ Enviar solicitud
 <p>Disciplina · Mente · Construcción</p>
 </div>
 
-<div>
-2026
-</div>
+<div>2026</div>
 
 </div>
 
 </footer>
 
-<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
+<script src="script.js"></script>
+
 </body>
-  <div id="particles-js"></div>
 
 </html>

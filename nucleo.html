@@ -2,91 +2,108 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>NÚCLEO // Acceso interno</title>
+<title>NÚCLEO // Sistema Interno</title>
 
 <style>
 
 body{
-background:#050505;
-color:#eaeaea;
-font-family:Arial, Helvetica, sans-serif;
+background:#030303;
+color:#00ff9c;
+font-family:monospace;
 margin:0;
-padding:0;
-text-align:center;
 }
 
-/* contenedor */
+.header{
+background:#0a0a0a;
+border-bottom:1px solid #111;
+padding:15px;
+display:flex;
+justify-content:space-between;
+}
+
+.logo{
+letter-spacing:3px;
+}
+
+.status{
+color:#888;
+}
 
 .container{
-max-width:900px;
-margin:auto;
-padding:60px 20px;
-}
-
-/* titulo */
-
-h1{
-font-size:48px;
-letter-spacing:4px;
-margin-bottom:10px;
-}
-
-.subtitle{
-color:#888;
-margin-bottom:40px;
-}
-
-/* caja del núcleo */
-
-.core-box{
-border:1px solid #333;
 padding:40px;
-border-radius:8px;
-background:#0d0d0d;
+max-width:1200px;
+margin:auto;
+}
+
+/* panel */
+
+.panel-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.panel{
+background:#070707;
+border:1px solid #111;
+padding:20px;
+border-radius:6px;
+}
+
+.panel h3{
+margin-top:0;
+font-size:16px;
+color:#00ff9c;
+}
+
+/* progreso */
+
+.progress{
+background:#111;
+height:10px;
+border-radius:5px;
+margin-top:10px;
+}
+
+.progress-bar{
+height:10px;
+background:#00ff9c;
+width:100%;
+border-radius:5px;
 }
 
 /* fases */
 
 .phase{
-border-bottom:1px solid #222;
-padding:15px;
+border-bottom:1px solid #111;
+padding:6px 0;
+color:#bbb;
 }
 
-.phase:last-child{
-border-bottom:none;
-}
+/* terminal */
 
-/* estado */
-
-.unlocked{
-color:#4caf50;
-}
-
-.locked{
-color:#999;
-}
-
-/* botón */
-
-.btn{
-margin-top:30px;
-display:inline-block;
-padding:12px 25px;
-border:1px solid #555;
-color:white;
-text-decoration:none;
-border-radius:6px;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#1a1a1a;
-}
-
-.warning{
+.terminal{
+background:#000;
+border:1px solid #111;
+padding:20px;
 margin-top:40px;
-font-size:13px;
-color:#666;
+border-radius:6px;
+}
+
+input{
+background:black;
+border:none;
+color:#00ff9c;
+font-family:monospace;
+font-size:14px;
+width:100%;
+outline:none;
+}
+
+.footer{
+margin-top:40px;
+color:#444;
+font-size:12px;
 }
 
 </style>
@@ -94,67 +111,116 @@ color:#666;
 
 <body>
 
+<div class="header">
+
+<div class="logo">NÚCLEO SYSTEM</div>
+
+<div class="status">
+STATUS: ACTIVO
+</div>
+
+</div>
+
 <div class="container">
 
-<h1>NÚCLEO</h1>
-<p class="subtitle">INTERFAZ INTERNA DEL SISTEMA</p>
+<div class="panel-grid">
 
-<div class="core-box">
+<div class="panel">
 
-<div class="phase">
-FASE 1 — Custodia  
-<span class="unlocked">● completada</span>
-</div>
+<h3>PROGRESO DEL SISTEMA</h3>
 
-<div class="phase">
-FASE 2 — Dominio  
-<span class="unlocked">● completada</span>
-</div>
+Fases completadas: 9 / 9
 
-<div class="phase">
-FASE 3 — Estrategia  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 4 — Expansión  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 5 — Consolidación  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 6 — Arquitectura  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 7 — Núcleo  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 8 — Proyección  
-<span class="unlocked">● completada</span>
-</div>
-
-<div class="phase">
-FASE 9 — Ascenso  
-<span class="unlocked">● completada</span>
+<div class="progress">
+<div class="progress-bar"></div>
 </div>
 
 </div>
 
-<a class="btn" href="index.html">Volver</a>
+<div class="panel">
 
-<p class="warning">
-Acceso restringido • Sistema Núcleo
-</p>
+<h3>ESTADO</h3>
+
+<div class="phase">Custodia ✔</div>
+<div class="phase">Dominio ✔</div>
+<div class="phase">Estrategia ✔</div>
+<div class="phase">Expansión ✔</div>
+<div class="phase">Consolidación ✔</div>
+<div class="phase">Arquitectura ✔</div>
+<div class="phase">Núcleo ✔</div>
+<div class="phase">Proyección ✔</div>
+<div class="phase">Ascenso ✔</div>
 
 </div>
+
+<div class="panel">
+
+<h3>SISTEMA</h3>
+
+Nodo central activo  
+Estructura estable  
+Protocolo operativo
+
+</div>
+
+<div class="panel">
+
+<h3>ACCESO</h3>
+
+Nivel actual:  
+**Operador**
+
+</div>
+
+</div>
+
+<div class="terminal">
+
+> terminal núcleo  
+
+<input id="command" placeholder="escribe comando...">
+
+</div>
+
+<div class="footer">
+NÚCLEO INTERNO • INTERFAZ DE SISTEMA
+</div>
+
+</div>
+
+<script>
+
+const input = document.getElementById("command");
+
+input.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+let cmd=input.value.toLowerCase();
+
+if(cmd==="estado"){
+alert("Sistema estable");
+}
+
+else if(cmd==="fases"){
+alert("9 fases completadas");
+}
+
+else if(cmd==="salir"){
+window.location="index.html";
+}
+
+else{
+alert("Comando no reconocido");
+}
+
+input.value="";
+
+}
+
+});
+
+</script>
 
 </body>
 </html>

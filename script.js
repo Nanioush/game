@@ -1,26 +1,58 @@
-const items = document.querySelectorAll(".timeline-item")
+particlesJS("particles-js",{
 
-const observer = new IntersectionObserver(entries => {
+particles:{
+number:{value:60},
 
-entries.forEach(entry => {
+color:{value:"#ffd700"},
 
-if(entry.isIntersecting){
+shape:{type:"circle"},
 
-entry.target.style.opacity = 1
-entry.target.style.transform = "translateY(0)"
+opacity:{value:0.4},
 
+size:{value:3},
+
+line_linked:{
+enable:true,
+distance:150,
+color:"#ffd700",
+opacity:0.2,
+width:1
+},
+
+move:{
+enable:true,
+speed:1.2
+}
 }
 
 })
 
-})
 
-items.forEach(item => {
+const form = document.getElementById("accessForm")
 
-item.style.opacity = 0
-item.style.transform = "translateY(40px)"
-item.style.transition = "all 0.6s ease"
+form.addEventListener("submit",function(e){
 
-observer.observe(item)
+e.preventDefault()
+
+const name=document.getElementById("name").value
+const email=document.getElementById("email").value
+const message=document.getElementById("message").value
+
+const request={
+name,
+email,
+message,
+date:new Date().toLocaleString()
+}
+
+let requests=JSON.parse(localStorage.getItem("nucleo_requests"))||[]
+
+requests.push(request)
+
+localStorage.setItem("nucleo_requests",JSON.stringify(requests))
+
+document.getElementById("formStatus").innerText="Solicitud enviada."
+
+form.reset()
 
 })

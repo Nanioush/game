@@ -1,180 +1,53 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>NÚCLEO // Sistema interno</title>
+<title>NÚCLEO - Sistema Interno</title>
 
 <style>
 
 body{
 background:black;
-color:#00ff9c;
+color:#00ff88;
 font-family:monospace;
 margin:0;
-overflow:hidden;
+padding:0;
 }
-
-/* BOOT */
 
 #boot{
-position:fixed;
-width:100%;
-height:100%;
-padding:40px;
-background:black;
-}
-
-.progress{
-height:10px;
-background:#111;
-margin-top:20px;
-}
-
-.bar{
-height:10px;
-width:0%;
-background:#00ff9c;
-}
-
-/* LOGIN */
-
-#login{
-display:none;
-position:fixed;
-width:100%;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:black;
-}
-
-input{
-background:black;
-border:1px solid #00ff9c;
-color:#00ff9c;
-padding:10px;
-font-family:monospace;
-}
-
-/* PANEL */
-
-#system{
-display:none;
 padding:30px;
+white-space:pre-line;
 }
 
-.header{
-display:flex;
-justify-content:space-between;
-border-bottom:1px solid #111;
-padding-bottom:10px;
-margin-bottom:20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.panel{
-border:1px solid #111;
+#terminal{
+display:none;
 padding:20px;
-background:#050505;
-}
-
-.phase{
-padding:5px 0;
-border-bottom:1px solid #111;
-}
-
-/* MAPA */
-
-.system-map{
-display:flex;
-flex-direction:column-reverse;
-gap:6px;
-font-size:14px;
-}
-
-.system-map div{
-padding:4px 0;
-border-bottom:1px solid #111;
-}
-
-/* RADAR */
-
-.radar-container{
-display:flex;
-justify-content:center;
-align-items:center;
-margin-top:20px;
-}
-
-.radar{
-position:relative;
-width:200px;
-height:200px;
-border-radius:50%;
-border:1px solid #00ff9c;
-overflow:hidden;
-}
-
-.radar-circle{
-position:absolute;
-width:100%;
-height:100%;
-border-radius:50%;
-border:1px solid rgba(0,255,156,0.2);
-}
-
-.radar-circle:nth-child(2){
-width:140px;
-height:140px;
-top:30px;
-left:30px;
-}
-
-.radar-circle:nth-child(3){
-width:80px;
-height:80px;
-top:60px;
-left:60px;
-}
-
-.radar-line{
-position:absolute;
-width:50%;
-height:2px;
-background:#00ff9c;
-top:50%;
-left:50%;
-transform-origin:left center;
-animation:radar-scan 4s linear infinite;
-}
-
-@keyframes radar-scan{
-
-from{ transform:rotate(0deg); }
-
-to{ transform:rotate(360deg); }
-
-}
-
-/* TERMINAL */
-
-.terminal{
-margin-top:30px;
-border:1px solid #111;
-padding:20px;
-background:black;
 }
 
 #terminal-output{
-height:150px;
-overflow:auto;
+height:70vh;
+overflow-y:auto;
+border:1px solid #00ff88;
+padding:15px;
+margin-bottom:10px;
+}
+
+#cmd{
+width:100%;
+padding:10px;
+background:black;
+border:1px solid #00ff88;
+color:#00ff88;
+font-family:monospace;
+}
+
+#cmd:focus{
+outline:none;
+}
+
+.title{
+font-size:22px;
 margin-bottom:10px;
 }
 
@@ -184,258 +57,194 @@ margin-bottom:10px;
 
 <body>
 
-<!-- BOOT -->
+<div id="boot"></div>
 
-<div id="boot">
+<div id="terminal">
 
-<div id="bootlog"></div>
-
-<div class="progress">
-<div class="bar" id="bar"></div>
+<div class="title">
+SISTEMA NÚCLEO — TERMINAL CENTRAL
 </div>
 
-</div>
+<div id="terminal-output"></div>
 
-<!-- LOGIN -->
-
-<div id="login">
-
-<h2>ACCESO AL NÚCLEO</h2>
-
-<input id="password" placeholder="introducir clave">
-
-</div>
-
-<!-- PANEL -->
-
-<div id="system">
-
-<div class="header">
-
-<div>NÚCLEO SYSTEM</div>
-<div>STATUS: ACTIVO</div>
-
-</div>
-
-<div class="grid">
-
-<div class="panel">
-
-<h3>PROGRESO</h3>
-
-Sistema estructural completado  
-9 / 9 fases
-
-</div>
-
-<div class="panel">
-
-<h3>FASES</h3>
-
-<div class="phase">Custodia ✔</div>
-<div class="phase">Dominio ✔</div>
-<div class="phase">Estrategia ✔</div>
-<div class="phase">Expansión ✔</div>
-<div class="phase">Consolidación ✔</div>
-<div class="phase">Arquitectura ✔</div>
-<div class="phase">Núcleo ✔</div>
-<div class="phase">Proyección ✔</div>
-<div class="phase">Ascenso ✔</div>
-
-</div>
-
-<div class="panel">
-
-<h3>MAPA DEL SISTEMA</h3>
-
-<div class="system-map">
-
-<div>Ascenso</div>
-<div>Proyección</div>
-<div>Núcleo</div>
-<div>Arquitectura</div>
-<div>Consolidación</div>
-<div>Expansión</div>
-<div>Estrategia</div>
-<div>Dominio</div>
-<div>Custodia</div>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h3>RADAR DEL NÚCLEO</h3>
-
-<div class="radar-container">
-
-<div class="radar">
-
-<div class="radar-circle"></div>
-<div class="radar-circle"></div>
-<div class="radar-circle"></div>
-
-<div class="radar-line"></div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="terminal">
-
-<div id="terminal-output">
-> terminal núcleo iniciado
-</div>
-
-<input id="cmd" placeholder="comando...">
-
-</div>
+<input id="cmd" placeholder="Introduce comando...">
 
 </div>
 
 <script>
 
-/* BOOT */
+const boot = document.getElementById("boot")
+const terminal = document.getElementById("terminal")
+const cmd = document.getElementById("cmd")
+const output = document.getElementById("terminal-output")
 
-const bootMessages = [
-"Iniciando núcleo...",
-"Cargando módulos...",
+const bootLines = [
+
+"Iniciando sistema NÚCLEO...",
 "Verificando arquitectura...",
-"Sincronizando fases...",
-"Preparando interfaz..."
-];
+"Cargando módulos estratégicos...",
+"Inicializando radar...",
+"Verificando fases del proyecto...",
+"",
+"FASE 1 — Custodia ✔",
+"FASE 2 — Dominio ✔",
+"FASE 3 — Estrategia ✔",
+"FASE 4 — Expansión ✔",
+"FASE 5 — Consolidación ✔",
+"FASE 6 — Arquitectura ✔",
+"FASE 7 — Núcleo ✔",
+"FASE 8 — Proyección ✔",
+"FASE 9 — Ascenso ✔",
+"",
+"Conectando nodo central...",
+"Acceso autorizado.",
+"",
+"Bienvenido al NÚCLEO."
 
-let i=0;
-const log=document.getElementById("bootlog");
+]
 
-function boot(){
+let i = 0
 
-if(i<bootMessages.length){
+function bootSequence(){
 
-let line=document.createElement("div");
-line.innerText=bootMessages[i];
+if(i < bootLines.length){
 
-log.appendChild(line);
+boot.innerHTML += bootLines[i] + "\n"
 
-i++;
+i++
 
-setTimeout(boot,700);
-
-}else{
-
-startBar();
+setTimeout(bootSequence,500)
 
 }
 
-}
-
-boot();
-
-let progress=0;
-
-function startBar(){
-
-const bar=document.getElementById("bar");
-
-let interval=setInterval(()=>{
-
-progress+=3;
-bar.style.width=progress+"%";
-
-if(progress>=100){
-
-clearInterval(interval);
+else{
 
 setTimeout(()=>{
 
-document.getElementById("boot").style.display="none";
-document.getElementById("login").style.display="flex";
+boot.style.display="none"
+terminal.style.display="block"
 
-},500);
+startTerminal()
 
-}
-
-},40);
-
-}
-
-/* LOGIN */
-
-const passwordInput=document.getElementById("password");
-
-passwordInput.addEventListener("keydown",function(e){
-
-if(e.key==="Enter"){
-
-if(passwordInput.value==="nucleo9"){
-
-document.getElementById("login").style.display="none";
-document.getElementById("system").style.display="block";
-
-}else{
-
-passwordInput.value="";
-alert("clave incorrecta");
+},800)
 
 }
 
 }
 
-});
+bootSequence()
 
-/* TERMINAL */
+function print(text){
 
-const cmd=document.getElementById("cmd");
-const output=document.getElementById("terminal-output");
+let line=document.createElement("div")
+
+line.innerText=text
+
+output.appendChild(line)
+
+output.scrollTop=output.scrollHeight
+
+}
+
+function startTerminal(){
+
+print("Sistema listo.")
+print("")
+print("COMANDOS DISPONIBLES:")
+print("1 - Estado del sistema")
+print("2 - Ver fases")
+print("3 - Radar del núcleo")
+print("4 - Mapa estructural")
+print("5 - Archivo del núcleo")
+print("6 - Limpiar terminal")
+print("7 - Salir")
+print("")
+
+}
 
 cmd.addEventListener("keydown",function(e){
 
 if(e.key==="Enter"){
 
-let command=cmd.value.toLowerCase();
+let command = cmd.value
 
-let line=document.createElement("div");
-line.innerText="> "+command;
-output.appendChild(line);
+print("> "+command)
 
-if(command==="estado"){
-output.append("Sistema estable");
+if(command==="1"){
+
+print("ESTADO DEL SISTEMA")
+print("Nodo central: activo")
+print("Integridad del sistema: 100%")
+print("Fases completadas: 9/9")
+
 }
 
-else if(command==="fases"){
-output.append("9 fases completadas");
+else if(command==="2"){
+
+print("FASES DEL PROYECTO")
+
+print("1 Custodia")
+print("2 Dominio")
+print("3 Estrategia")
+print("4 Expansión")
+print("5 Consolidación")
+print("6 Arquitectura")
+print("7 Núcleo")
+print("8 Proyección")
+print("9 Ascenso")
+
 }
 
-else if(command==="nucleo"){
-output.append("Nodo central activo");
+else if(command==="3"){
+
+print("RADAR DEL NÚCLEO ACTIVO")
+print("Detectando nodos...")
+print("Nodo central: ONLINE")
+print("Sistema estable")
+
 }
 
-else if(command==="limpiar"){
-output.innerHTML="";
+else if(command==="4"){
+
+print("MAPA ESTRUCTURAL")
+print("Base -> Núcleo -> Expansión -> Proyección")
+
 }
 
-else if(command==="salir"){
-window.location="index.html";
+else if(command==="5"){
+
+print("ARCHIVO DEL NÚCLEO")
+print("Sistema basado en disciplina, estrategia y estructura.")
+print("El núcleo coordina todas las fases.")
+
+}
+
+else if(command==="6"){
+
+output.innerHTML=""
+
+}
+
+else if(command==="7"){
+
+window.location="index.html"
+
 }
 
 else{
-output.append("comando no reconocido");
-}
 
-cmd.value="";
-
-output.scrollTop=output.scrollHeight;
+print("Comando no reconocido")
 
 }
 
-});
+cmd.value=""
+
+}
+
+})
 
 </script>
 
 </body>
 </html>
+```

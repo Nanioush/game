@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NÚCLEO | Solicitud recibida</title>
+  <meta name="description" content="Solicitud recibida - NÚCLEO" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #f5f2ea;
+      --muted: #b0aaa0;
+      --gold: #b79257;
+      --gold-2: #e0bf86;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+      --radius-xl: 32px;
+      --transition: 260ms ease;
+      --max-width: 980px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(183, 146, 87, 0.12), transparent 24%),
+        linear-gradient(180deg, #030303 0%, #070707 38%, #090909 100%);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 82%);
+      opacity: 0.28;
+    }
+
+    .wrap {
+      width: min(var(--max-width), calc(100% - 2rem));
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background:
+        radial-gradient(circle at top, rgba(183, 146, 87, 0.10), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 3.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .mark {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.6rem;
+      border-radius: 28px;
+      border: 1px solid rgba(183, 146, 87, 0.42);
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(183,146,87,0.24), rgba(255,255,255,0.02));
+      box-shadow: 0 0 90px rgba(183, 146, 87, 0.14), inset 0 0 25px rgba(183, 146, 87, 0.18);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.4rem;
+    }
+
+    .mark::before {
+      content: "";
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border: 1px solid rgba(255,255,255,0.14);
+      transform: rotate(45deg);
+    }
+
+    .mark span {
+      position: relative;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #f9e2b6;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-2);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(183,146,87,0.2), rgba(224,191,134,0.8));
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 0 auto 1.1rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .strong-line {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.08rem;
+      color: #ebe5d8;
+      font-weight: 600;
+    }
+
+    .info-box {
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      text-align: left;
+      padding: 1.4rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-box p + p { margin-top: 0.8rem; }
+    .info-box p { color: var(--muted); }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #e3bf85 0%, #a67b3d 100%);
+      color: #15120d;
+      box-shadow: 0 14px 34px rgba(183, 146, 87, 0.28);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: 0.92rem;
+      color: #8f887d;
+    }
+
+    @media (max-width: 640px) {
+      .card { padding: 1.5rem; }
+      .btn-row { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="mark"><span>N</span></div>
+      <p class="eyebrow">Solicitud recibida</p>
+      <h1>Tu petición ha entrado en NÚCLEO.</h1>
+      <p class="lead">
+        La solicitud ha sido enviada correctamente. A partir de aquí, lo que importa no es impresionar, sino demostrar alineación real con la filosofía, el nivel y la dirección del proyecto.
+      </p>
+      <p class="strong-line">
+        La entrada no se concede por impulso. Se concede por criterio, disciplina y potencial real.
+      </p>
+
+      <div class="info-box">
+        <p><strong>Qué ocurre ahora:</strong></p>
+        <p>Tu petición quedará pendiente de revisión.</p>
+        <p>Se valorará la seriedad, la visión, la capacidad de sostener disciplina y la coherencia con la identidad de NÚCLEO.</p>
+        <p>Solo avanzarán quienes encajen de verdad con la estructura y el nivel que se quiere construir.</p>
+      </div>
+
+      <div class="btn-row">
+        <a href="index.html" class="btn btn-primary">Volver a NÚCLEO</a>
+        <a href="https://forms.gle/wEy1cqAiCH4mUFZT7" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Enviar otra solicitud</a>
+      </div>
+
+      <p class="footer-note">NÚCLEO no se explica. Se demuestra.</p>
+    </section>
+  </main>
+</body>
+</html>

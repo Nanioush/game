@@ -1,20 +1,26 @@
-// animación simple al hacer scroll
+const items = document.querySelectorAll(".timeline-item")
 
-const elements = document.querySelectorAll(".section");
+const observer = new IntersectionObserver(entries => {
 
-window.addEventListener("scroll", () => {
+entries.forEach(entry => {
 
-  elements.forEach(el => {
+if(entry.isIntersecting){
 
-    const pos = el.getBoundingClientRect().top;
+entry.target.style.opacity = 1
+entry.target.style.transform = "translateY(0)"
 
-    if(pos < window.innerHeight - 100){
+}
 
-      el.style.opacity = 1;
-      el.style.transform = "translateY(0px)";
+})
 
-    }
+})
 
-  })
+items.forEach(item => {
+
+item.style.opacity = 0
+item.style.transform = "translateY(40px)"
+item.style.transition = "all 0.6s ease"
+
+observer.observe(item)
 
 })

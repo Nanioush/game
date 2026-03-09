@@ -1,44 +1,47 @@
 ```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
-<title>NÚCLEO - Sistema Interno</title>
+<title>SISTEMA NÚCLEO</title>
 
 <style>
 
 body{
-background:black;
-color:#00ff88;
+background:#050505;
+color:#00ffa6;
 font-family:monospace;
 margin:0;
 padding:0;
 }
 
 #boot{
-padding:30px;
+padding:40px;
 white-space:pre-line;
+font-size:14px;
 }
 
 #terminal{
 display:none;
-padding:20px;
+padding:25px;
 }
 
 #terminal-output{
-height:70vh;
+height:60vh;
 overflow-y:auto;
-border:1px solid #00ff88;
-padding:15px;
+border:1px solid #00ffa6;
+padding:20px;
 margin-bottom:10px;
+background:#000;
 }
 
 #cmd{
 width:100%;
-padding:10px;
-background:black;
-border:1px solid #00ff88;
-color:#00ff88;
+padding:12px;
+background:#000;
+border:1px solid #00ffa6;
+color:#00ffa6;
 font-family:monospace;
 }
 
@@ -48,7 +51,8 @@ outline:none;
 
 .title{
 font-size:22px;
-margin-bottom:10px;
+margin-bottom:15px;
+letter-spacing:2px;
 }
 
 </style>
@@ -62,12 +66,12 @@ margin-bottom:10px;
 <div id="terminal">
 
 <div class="title">
-SISTEMA NÚCLEO — TERMINAL CENTRAL
+SISTEMA CENTRAL — NÚCLEO
 </div>
 
 <div id="terminal-output"></div>
 
-<input id="cmd" placeholder="Introduce comando...">
+<input id="cmd" placeholder="introducir comando">
 
 </div>
 
@@ -75,20 +79,52 @@ SISTEMA NÚCLEO — TERMINAL CENTRAL
 
 const boot = document.getElementById("boot")
 const terminal = document.getElementById("terminal")
-const cmd = document.getElementById("cmd")
 const output = document.getElementById("terminal-output")
+const cmd = document.getElementById("cmd")
+
+/* ----------- MIEMBROS DEL SISTEMA ----------- */
+
+const miembros = [
+
+{
+id:"001",
+nombre:"Yerover",
+edad:21,
+fase:"3 — Dominio",
+estado:"Activo"
+}
+
+]
+
+/* ----------- FASES ----------- */
+
+const fases = [
+
+"1 — Custodia",
+"2 — Estrategia",
+"3 — Dominio",
+"4 — Expansión",
+"5 — Consolidación",
+"6 — Arquitectura",
+"7 — Núcleo",
+"8 — Proyección",
+"9 — Ascenso"
+
+]
+
+/* ----------- ARRANQUE DEL SISTEMA ----------- */
 
 const bootLines = [
 
-"Iniciando sistema NÚCLEO...",
+"Iniciando sistema del Núcleo...",
 "Verificando arquitectura...",
 "Cargando módulos estratégicos...",
-"Inicializando radar...",
-"Verificando fases del proyecto...",
+"Activando radar del sistema...",
+"Verificando estructura de fases...",
 "",
 "FASE 1 — Custodia ✔",
-"FASE 2 — Dominio ✔",
-"FASE 3 — Estrategia ✔",
+"FASE 2 — Estrategia ✔",
+"FASE 3 — Dominio ✔",
 "FASE 4 — Expansión ✔",
 "FASE 5 — Consolidación ✔",
 "FASE 6 — Arquitectura ✔",
@@ -96,10 +132,12 @@ const bootLines = [
 "FASE 8 — Proyección ✔",
 "FASE 9 — Ascenso ✔",
 "",
-"Conectando nodo central...",
-"Acceso autorizado.",
+"Conectando nodos...",
+"Sincronizando sistema...",
 "",
-"Bienvenido al NÚCLEO."
+"ACCESO AUTORIZADO",
+"",
+"Bienvenido al Núcleo."
 
 ]
 
@@ -113,7 +151,7 @@ boot.innerHTML += bootLines[i] + "\n"
 
 i++
 
-setTimeout(bootSequence,500)
+setTimeout(bootSequence,400)
 
 }
 
@@ -134,6 +172,8 @@ startTerminal()
 
 bootSequence()
 
+/* ----------- TERMINAL ----------- */
+
 function print(text){
 
 let line=document.createElement("div")
@@ -150,14 +190,16 @@ function startTerminal(){
 
 print("Sistema listo.")
 print("")
-print("COMANDOS DISPONIBLES:")
-print("1 - Estado del sistema")
-print("2 - Ver fases")
-print("3 - Radar del núcleo")
-print("4 - Mapa estructural")
-print("5 - Archivo del núcleo")
-print("6 - Limpiar terminal")
-print("7 - Salir")
+print("COMANDOS DISPONIBLES")
+print("")
+print("1 — Estado del sistema")
+print("2 — Ver fases")
+print("3 — Radar del núcleo")
+print("4 — Mapa estructural")
+print("5 — Archivo del núcleo")
+print("6 — Limpiar terminal")
+print("7 — Salir")
+print("8 — Ver miembros")
 print("")
 
 }
@@ -170,54 +212,59 @@ let command = cmd.value
 
 print("> "+command)
 
+/* ESTADO DEL SISTEMA */
+
 if(command==="1"){
 
 print("ESTADO DEL SISTEMA")
 print("Nodo central: activo")
 print("Integridad del sistema: 100%")
-print("Fases completadas: 9/9")
+print("Miembros registrados: "+miembros.length)
 
 }
+
+/* FASES */
 
 else if(command==="2"){
 
-print("FASES DEL PROYECTO")
+print("FASES DEL SISTEMA")
+print("")
 
-print("1 Custodia")
-print("2 Dominio")
-print("3 Estrategia")
-print("4 Expansión")
-print("5 Consolidación")
-print("6 Arquitectura")
-print("7 Núcleo")
-print("8 Proyección")
-print("9 Ascenso")
+fases.forEach(f=>{
+print(f)
+})
 
 }
+
+/* RADAR */
 
 else if(command==="3"){
 
 print("RADAR DEL NÚCLEO ACTIVO")
-print("Detectando nodos...")
-print("Nodo central: ONLINE")
+print("Nodos detectados: "+miembros.length)
 print("Sistema estable")
 
 }
 
+/* MAPA */
+
 else if(command==="4"){
 
-print("MAPA ESTRUCTURAL")
-print("Base -> Núcleo -> Expansión -> Proyección")
+print("MAPA DEL SISTEMA")
+print("Base → Núcleo → Expansión → Proyección")
 
 }
+
+/* ARCHIVO */
 
 else if(command==="5"){
 
 print("ARCHIVO DEL NÚCLEO")
-print("Sistema basado en disciplina, estrategia y estructura.")
-print("El núcleo coordina todas las fases.")
+print("Sistema basado en disciplina, estrategia y evolución progresiva.")
 
 }
+
+/* LIMPIAR */
 
 else if(command==="6"){
 
@@ -225,11 +272,35 @@ output.innerHTML=""
 
 }
 
+/* SALIR */
+
 else if(command==="7"){
 
 window.location="index.html"
 
 }
+
+/* VER MIEMBROS */
+
+else if(command==="8"){
+
+print("MIEMBROS DEL NÚCLEO")
+print("")
+
+miembros.forEach(m=>{
+
+print("MIEMBRO "+m.id)
+print("Nombre: "+m.nombre)
+print("Edad: "+m.edad)
+print("Fase actual: "+m.fase)
+print("Estado: "+m.estado)
+print("")
+
+})
+
+}
+
+/* COMANDO DESCONOCIDO */
 
 else{
 
@@ -246,5 +317,6 @@ cmd.value=""
 </script>
 
 </body>
+
 </html>
 ```

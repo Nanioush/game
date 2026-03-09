@@ -16,30 +16,21 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-
+```html
 <script>
 
-let clicks = 0;
+document.addEventListener("keydown", function(event) {
 
-document.getElementById("titulo").addEventListener("click", function(){
-
-clicks++;
-
-if(clicks === 3){
+if (event.ctrlKey && event.shiftKey && event.key === "N") {
 
 window.location.href = "nucleo.html";
 
 }
 
-setTimeout(function(){
-
-clicks = 0;
-
-},2000);
-
 });
 
 </script>
+```
 
 <body>
 

@@ -17,6 +17,30 @@
 
 </head>
 
+<script>
+
+let clicks = 0;
+
+document.getElementById("titulo").addEventListener("click", function(){
+
+clicks++;
+
+if(clicks === 3){
+
+window.location.href = "nucleo.html";
+
+}
+
+setTimeout(function(){
+
+clicks = 0;
+
+},2000);
+
+});
+
+</script>
+
 <body>
 
 <div id="particles-js"></div>

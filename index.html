@@ -18,12 +18,24 @@
 </head>
 ```html
 <script>
+
 let espacioCount = 0;
+
 document.addEventListener("keydown", function(event) {
-if(event.code === "Space"){ 
-espacioCount++; 
+
+if(event.code === "Space"){
+
+espacioCount++;
+
 if(espacioCount === 3){
+
 window.location.href = "nucleo.html";
+
+}
+
+setTimeout(function(){
+espacioCount = 0;
+},2000);
 
 }
 
@@ -31,6 +43,7 @@ window.location.href = "nucleo.html";
 
 </script>
 ```
+
 
 <body>
 

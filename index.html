@@ -20,9 +20,9 @@
 <script>
 
 document.addEventListener("keydown", function(event) {
-
-if (event.ctrlKey && event.shiftKey && event.key === "N") {
-
+if(event.code === "Space"){ 
+espacioCount++; 
+if(espacioCount === 3){
 window.location.href = "nucleo.html";
 
 }
